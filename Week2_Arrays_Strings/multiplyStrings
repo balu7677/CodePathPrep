@@ -1,0 +1,32 @@
+public class Solution {
+    public String multiply(String A, String B) {
+        char[] strA = A.toCharArray();
+        char[] strB = B.toCharArray();
+        int[] sum = new int[strA.length + strB.length];
+
+        int n1=0, n2=0, len=sum.length-1, c = 0, k = len;
+        for(int i = strA.length-1; i>=0; i--){
+            n1 = strA[i]-'0';
+            k = len;
+            c = 0;
+            for(int j=strB.length-1; j >= 0; j--){
+                n2=strB[j]-'0';
+                int val= sum[k] + (n1*n2) + c;
+                sum[k--] = val % 10;
+                c = val /10;
+            }
+            if(c != 0){
+                sum[k--] = c;
+            }
+            len--;
+        }
+        StringBuilder sb = new StringBuilder();
+        int i=0;
+        while( i < sum.length && sum[i] == 0) ++i;
+        while(i < sum.length){
+            sb.append(sum[i++]);
+        }
+        return sb.length() == 0 ? "0" : sb.toString();
+        
+    }
+}

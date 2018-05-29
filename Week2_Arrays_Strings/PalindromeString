@@ -1,0 +1,16 @@
+public class Solution {
+    public int isPalindrome(String A) {
+        
+		if(A==null||A.length()==0) return 0;
+ 
+		A = A.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+ 
+		for(int i = 0; i < A.length() ; i++){
+			if(A.charAt(i) != A.charAt(A.length() - 1 - i)){
+				return 0;
+			}
+		}
+ 
+		return 1;
+	}
+}

@@ -1,0 +1,35 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> diagonal(ArrayList<ArrayList<Integer>> A) {
+        
+        if(A == null || A.size() == 0)
+            return null;
+        ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+        int rowLen = A.size();
+        int colLen = A.get(0).size();
+        
+        for(int j=0;j<colLen;j++){
+            int i=0;
+            int k = j;
+            ArrayList<Integer> rowList = new ArrayList<Integer>();
+            while(i>=0 && i<rowLen && k>=0 && k<colLen){
+                rowList.add(A.get(i).get(k));
+                i+=1;
+                k-=1;
+            }
+            list.add(rowList);
+        }
+        for(int i=1;i<rowLen;i++){
+            int j=colLen-1;
+            int k = i;
+            ArrayList<Integer> rowList = new ArrayList<Integer>();
+            while(k>=0 && k<rowLen && j>=0 && j<colLen){
+                rowList.add(A.get(k).get(j));
+                k+=1;
+                j-=1;
+            }
+            list.add(rowList);
+        }
+        return list;
+    }
+}
+
